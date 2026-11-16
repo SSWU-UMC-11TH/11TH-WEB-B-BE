@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: week6-spring
+  # DB 접속 정보는 코드에 쓰지 않고 .env 파일(Git 제외)에서 읽어요.
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # SQL로 만든 테이블을 쓰므로 바꾸지 않고 엔티티와 일치하는지만 검사해요.
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
